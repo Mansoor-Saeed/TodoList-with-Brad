@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List With BradSchiff in JavaScript</title>
+</head>
+<body style="margin: 50px">
+    <h1>To-do App</h1>
+    <p>It is just a simple browser based To-do app it does not store any data in the database.</p>
+<form id="todoForm">
+    <input id="todoField" type = "text" autocomplete = "off">
+    <button>Create item</button>
+</form>
+
+<h3>Stuff needed to be done: </h3>
+<ul id="todoList">
+
+</ul>
+
+
+<script>
+    let todoForm = document.getElementById("todoForm")
+    let todoField = document.getElementById("todoField")
+    let todoList = document.getElementById("todoList")
+    todoForm.addEventListener("submit" , (e) => {
+        e.preventDefault()
+        createItem(todoField.value)
+    })
+
+
+    function createItem(x){
+        let ourHTML = `<li>${x} <button onclick="deleteItem(this)">Delete</button></li>`
+        todoList.insertAdjacentHTML("beforeend" , ourHTML)
+        todoField.value = ""
+        todoField.focus()
+    }
+
+    function deleteItem(elementToDelete){
+        elementToDelete.parentElement.remove()
+    }
+
+
+
+</script>
+
+</body>
+</html>
